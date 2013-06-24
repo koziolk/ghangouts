@@ -63,7 +63,7 @@ function showParticipants() {
     if (!participant.person) {
       retVal += '<li>A participant not running this app</li>';
     }
-    retVal += '<li>' + participant.person.displayName + '</li>';
+    retVal += '<li>' + participant.person.displayName + ' - ' +  participant.person.name.familyName + '</li>';
   }
 
   retVal += '</ul>';
