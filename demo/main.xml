@@ -12,7 +12,7 @@
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
       
       <!-- jQuery rest -->
-      <script src="http://jpillora.com/jquery.rest/dist/jquery.rest.min.js"></script>      
+      <script src="https://raw.github.com/jpillora/jquery.rest/gh-pages/dist/jquery.rest.min.js"></script>      
       
       <link rel="stylesheet" href="https://raw.github.com/koziolk/ghangouts/master/demo/css/main.css" />
 
