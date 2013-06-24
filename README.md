@@ -1,4 +1,4 @@
 ghangouts
 =========
 
-Google hangouts sample applications
+Google (G+) hangout sample applications
