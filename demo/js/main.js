@@ -1,6 +1,8 @@
 (function (window) {
   "use strict";
-
+  
+  var client = new $.RestClient("http://gwiz.gene.com/peeps-search/contact/");
+  
   function HangoutDemo() {
     console.log("Starting...");
 
@@ -47,7 +49,17 @@
     for (i = 0; i < l; i++) {
       li = document.createElement("li");
       if (participants[i].person) {
-        li.innerHTML = participants[i].person.displayName;
+    	
+    	var displayName = participants[i].person.displayName;
+    	
+    	console.log("Calling REST for person " + displayName);
+    	
+    	// call REST service
+    	client.displayName.read(displayName).done(function (data){
+    	  alert('I have person data: ' + data);
+    	});
+    	
+        li.innerHTML = displayName;
       } else {
         li.innerHTML = "unknown";
       }

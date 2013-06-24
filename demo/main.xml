@@ -7,6 +7,13 @@
   <Content type="html">
     <![CDATA[
       <script src="//talkgadget.google.com/hangouts/api/hangout.js?v=1.0"></script>
+    
+      <!-- jQuery -->
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+      
+      <!-- jQuery rest -->
+      <script src="http://jpillora.com/jquery.rest/dist/jquery.rest.min.js"></script>      
+      
       <link rel="stylesheet" href="https://raw.github.com/koziolk/ghangouts/master/demo/css/main.css" />
 
       <h1>Hangout Demo</h1>
