@@ -1,74 +1,80 @@
-(function (window) {
-  "use strict";
-  
-  var client = new $.RestClient("http://gwiz.gene.com/peeps-search/contact/");
-  
-  function HangoutDemo() {
-    console.log("Starting...");
+(function(window) {
+	"use strict";
 
-    gapi.hangout.onApiReady.add(this.onApiReady.bind(this));
-  }
+	var client = new $.RestClient("http://gwiz.gene.com/peeps-search/");
 
-  HangoutDemo.prototype.onApiReady = function (event) {
-    if (event.isApiReady === true) {
-      console.log("API Ready");
+	function HangoutDemo() {
+		console.log("Starting...");
 
-      gapi.hangout.onParticipantsChanged.add(this.onParticipantsChanged.bind(this));
+		gapi.hangout.onApiReady.add(this.onApiReady.bind(this));
+	}
 
-      document.getElementById("clickme").onclick = (this.buttonClick.bind(this));
+	HangoutDemo.prototype.onApiReady = function(event) {
+		if (event.isApiReady === true) {
+			console.log("API Ready");
 
-      gapi.hangout.data.onStateChanged.add(this.displayCount.bind(this));
+			gapi.hangout.onParticipantsChanged.add(this.onParticipantsChanged
+					.bind(this));
 
-      this.displayCount();
-      this.displayParticipants();
-    }
-  };
+			document.getElementById("clickme").onclick = (this.buttonClick
+					.bind(this));
 
-  HangoutDemo.prototype.buttonClick = function () {
-    var value = gapi.hangout.data.getValue("count") || "0";
-    value = (parseInt(value, 10) + 1).toString();
-    gapi.hangout.data.setValue("count", value);
-  };
+			gapi.hangout.data.onStateChanged.add(this.displayCount.bind(this));
 
-  HangoutDemo.prototype.displayCount = function (event) {
-    var value = gapi.hangout.data.getValue("count") || "0";
-    document.getElementById("count").innerHTML = value;
-  };
+			this.displayCount();
+			this.displayParticipants();
+		}
+	};
 
-  HangoutDemo.prototype.onParticipantsChanged = function (event) {
-    var div = document.getElementById("container");
-    div.innerHTML = "";
-    this.displayParticipants();
-  };
+	HangoutDemo.prototype.buttonClick = function() {
+		var value = gapi.hangout.data.getValue("count") || "0";
+		value = (parseInt(value, 10) + 1).toString();
+		gapi.hangout.data.setValue("count", value);
+	};
 
-  HangoutDemo.prototype.displayParticipants = function () {
-    var div, participants, ul, li, i, l;
-    participants = gapi.hangout.getParticipants();
-    ul = document.createElement("ul");
-    l = participants.length;
-    for (i = 0; i < l; i++) {
-      li = document.createElement("li");
-      if (participants[i].person) {
-    	
-    	var displayName = participants[i].person.displayName;
-    	
-    	console.log("Calling REST for person " + displayName);
-    	
-    	// call REST service
-    	client.displayName.read(displayName).done(function (data){
-    	  alert('I have person data: ' + data);
-    	});
-    	
-        li.innerHTML = displayName;
-      } else {
-        li.innerHTML = "unknown";
-      }
-      ul.appendChild(li);
-    }
-    div = document.getElementById("container");
-    div.appendChild(ul);
-  };
+	HangoutDemo.prototype.displayCount = function(event) {
+		var value = gapi.hangout.data.getValue("count") || "0";
+		document.getElementById("count").innerHTML = value;
+	};
 
-  var hangoutDemo = new HangoutDemo();
-  
+	HangoutDemo.prototype.onParticipantsChanged = function(event) {
+		var div = document.getElementById("container");
+		div.innerHTML = "";
+		this.displayParticipants();
+	};
+
+	HangoutDemo.prototype.displayParticipants = function() {
+		var div, participants, ul, li, i, l;
+		participants = gapi.hangout.getParticipants();
+		ul = document.createElement("ul");
+		l = participants.length;
+		for (i = 0; i < l; i++) {
+			li = document.createElement("li");
+			if (participants[i].person) {
+
+				var displayName = participants[i].person.displayName;
+
+				console.log("Before calling REST for person " + displayName);
+
+				// call REST service
+				client.add("contact");
+
+				client.contact.read(displayName).done(function(data) {
+					console.log(data);
+				});
+				
+				console.log("After calling REST for person " + displayName);
+				
+				li.innerHTML = displayName;
+			} else {
+				li.innerHTML = "unknown";
+			}
+			ul.appendChild(li);
+		}
+		div = document.getElementById("container");
+		div.appendChild(ul);
+	};
+
+	var hangoutDemo = new HangoutDemo();
+
 }(window));
