@@ -7,15 +7,13 @@
   <Content type="html">
     <![CDATA[
       <!-- G+ hangout api -->
-      <script src="http://talkgadget.google.com/hangouts/api/hangout.js?v=1.0"></script>
-    
+      <script src="//talkgadget.google.com/hangouts/api/hangout.js?v=1.0"></script>
       <!-- jQuery -->
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-      
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
       <!-- jQuery rest -->
-      <script src="https://raw.github.com/jpillora/jquery.rest/gh-pages/dist/jquery.rest.min.js"></script>      
+      <script src="//raw.github.com/jpillora/jquery.rest/gh-pages/dist/jquery.rest.min.js"></script>      
       
-      <link rel="stylesheet" href="https://raw.github.com/koziolk/ghangouts/master/demo/css/main.css" />
+      <link rel="stylesheet" href="//raw.github.com/koziolk/ghangouts/master/demo/css/main.css" />
 
       <h1>Hangout Demo</h1>
       
@@ -23,7 +21,7 @@
       
       <button id="clickme">Click Me</button> <span id="count">0</span>
 
-      <script src="https://raw.github.com/koziolk/ghangouts/master/demo/js/main.js"></script>
+      <script src="//raw.github.com/koziolk/ghangouts/master/demo/js/main.js"></script>
     ]]>
   </Content>
 </Module>
